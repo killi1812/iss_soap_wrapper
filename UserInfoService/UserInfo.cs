@@ -29,7 +29,8 @@ public class UserInfo : IUserInfo
         if (response.IsSuccessStatusCode)
         {
             var jsonResponse = response.Content.ReadAsStringAsync().Result;
-            return JsonSerializer.Deserialize<UserInfoDto>(jsonResponse);
+            var dto = JsonSerializer.Deserialize<UserInfoDto>(jsonResponse);
+            return dto;
         }
         
         return new UserInfoDto
